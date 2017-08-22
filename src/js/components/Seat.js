@@ -26,6 +26,8 @@ class Seat extends Component {
       list.push(<th>{i}</th>)
     }
 
+    const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+
     return (
       <div className="col-md-6 col-md-offset-3">
         <table className="table borderless">
@@ -36,16 +38,7 @@ class Seat extends Component {
             </tr>
           </thead>
           <tbody>
-            <Row alpha="A" />
-            <Row alpha="B" />
-            <Row alpha="C" />
-            <Row alpha="D" />
-            <Row alpha="E" />
-            <Row alpha="F" />
-            <Row alpha="G" />
-            <Row alpha="H" />
-            <Row alpha="I" />
-            <Row alpha="J" />
+          {rows.map(row => <Row alpha={row} />)}
           </tbody>
         </table>
         <button className="btn center-block">Confirm Booking</button>
