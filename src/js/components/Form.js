@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { bookToggle } from "../actions";
+import { createUser } from "../actions";
 
 class Form extends Component {
 
@@ -9,7 +9,7 @@ class Form extends Component {
     e.preventDefault()
     console.log(this.props.bookState)
 
-    this.props.bookToggle(this.props.bookState)
+    this.props.createUser(this.props.bookState)
     console.log(this.props.bookState)
   }
 
@@ -37,4 +37,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { bookToggle })(Form)
+export default connect(mapStateToProps, { createUser })(Form)

@@ -1,8 +1,12 @@
-export const BOOK_TOGGLE = 'BOOK_TOGGLE'
+export const CREATE_USER = 'CREATE_USER'
 
-export const bookToggle = (bookState) => {
+export const createUser = (name, seatCount, bookState) => {
   return {
-    type: BOOK_TOGGLE,
-    payload: !bookState
+    type: CREATE_USER,
+    payload: {
+      name,
+      seatCount,
+      bookState
+    }
   }
 }
