@@ -57,7 +57,11 @@ class Form extends Component {
 
 const mapStateToProps = (state) => {
   console.log(state)
-  return {}
+  return {
+    name: state.user.name,
+    seatCount: state.user.seatCount,
+    bookState: state.user.bookState
+  }
 }
 
 export default connect(mapStateToProps, { createUser })(Form)

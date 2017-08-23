@@ -32,7 +32,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    bookState: state.bookState
+    bookState: state.user.bookState
   }
 }
 
