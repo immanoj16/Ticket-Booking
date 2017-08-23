@@ -51,7 +51,8 @@ const config = {
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    stats: "errors-only"
+    stats: "errors-only",
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({

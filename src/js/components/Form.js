@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { bookToggle } from "../actions";
 
 class Form extends Component {
+
+  handleToggle (e) {
+    e.preventDefault()
+    console.log(this.props.bookState)
+
+    this.props.bookToggle(this.props.bookState)
+    console.log(this.props.bookState)
+  }
 
   render () {
     return (
@@ -12,11 +23,18 @@ class Form extends Component {
           <div className="form-group">
             <input type="text" className="form-control" placeholder="no. eg. 1, 2" />
           </div>
-          <button type="submit" className="btn" onClick={this.props.handleBooking}>Start Selecting</button>
+          <button type="submit" className="btn" onClick={this.handleToggle.bind(this)}>Start Selecting</button>
         </form>
       </div>
     )
   }
 }
 
-export default Form
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    bookState: state.bookState
+  }
+}
+
+export default connect(mapStateToProps, { bookToggle })(Form)
