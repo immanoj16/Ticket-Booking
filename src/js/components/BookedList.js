@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 const BookedList = (props) => {
+
+  const { name, seatCount, seatDetails } = props.user
+
   return (
     <div className="col-md-8 col-md-offset-2">
       <table className="table table-bordered">
@@ -12,11 +16,21 @@ const BookedList = (props) => {
         </tr>
         </thead>
         <tbody>
-
+          <tr>
+            <td>{name}</td>
+            <td>{seatCount}</td>
+            <td>{seatDetails.map(seat => seat + ', ')}</td>
+          </tr>
         </tbody>
       </table>
     </div>
   )
 }
 
-export default BookedList
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(BookedList)

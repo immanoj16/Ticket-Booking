@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+import { setSeatNumber, confirmBooking } from '../actions'
 
 class Row extends Component {
   constructor (props) {
@@ -9,6 +11,7 @@ class Row extends Component {
       className: null
     }
     this.handleSeatColor = this.handleSeatColor.bind(this)
+    this.setNullState = this.setNullState.bind(this)
   }
 
   handleSeatColor (no) {
@@ -22,7 +25,18 @@ class Row extends Component {
         className: null
       })
     }
-    console.log(this.props.alpha + (no + 1))
+
+    let seat = this.props.alpha + (no + 1)
+
+    this.props.setSeatNumber(seat)
+  }
+
+  setNullState () {
+    this.setState({
+      className: null
+    })
+
+    console.log(this.state.className)
   }
 
   render () {
@@ -46,6 +60,10 @@ class Row extends Component {
 
 class Seat extends Component {
 
+  handleConfirm () {
+    this.props.confirmBooking()
+  }
+
   render () {
     const list = []
     for (let i = 1; i < 13; i++) {
@@ -64,13 +82,13 @@ class Seat extends Component {
             </tr>
           </thead>
           <tbody>
-          {rows.map((row, no) => <Row key={row} alpha={row} />)}
+          {rows.map((row, no) => <Row key={row} alpha={row} setSeatNumber={this.props.setSeatNumber} />)}
           </tbody>
         </table>
-        <button className="btn center-block">Confirm Booking</button>
+        <button className="btn center-block" onClick={this.handleConfirm.bind(this)}>Confirm Booking</button>
       </div>
     )
   }
 }
 
-export default Seat
+export default connect(null, { setSeatNumber, confirmBooking })(Seat)

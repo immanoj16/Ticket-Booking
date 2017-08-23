@@ -23,7 +23,7 @@ class App extends Component {
           {this.props.bookState ? <Seat/> : null}
         </div>
         <div className="row">
-          <BookedList/>
+          {this.props.bookConfirm ? <BookedList/> : null}
         </div>
       </div>
     )
@@ -32,7 +32,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    bookState: state.user.bookState
+    bookState: state.user.bookState,
+    bookConfirm: state.user.bookConfirm
   }
 }
 
